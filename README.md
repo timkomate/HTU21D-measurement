@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-
-Sensor Data Logger README
+# Sensor Data Logger
 This repository contains a Python script that reads temperature and humidity data from an Adafruit HTU21D sensor and stores it in a MariaDB (MySQL) database. The script is designed to run on a Raspberry Pi or a similar device. It periodically reads sensor data and inserts it into the database for further analysis and monitoring.
 
 ## Prerequisites
