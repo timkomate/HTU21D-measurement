@@ -8,9 +8,7 @@ Before running the script, ensure you have the following components and software
 - Adafruit HTU21D temperature and humidity sensor.
 - Python 3.x installed on your device.
 - MariaDB (MySQL) database server set up with appropriate access credentials.
-- Required Python packages: `busio`, `board`, `mariadb`, and `adafruit_htu21d`. You can install them using pip:
-
-`pip install adafruit-circuitpython-htu21d mariadb`
+- Required Python packages: `busio`, `board`, `mariadb`, and `adafruit_htu21d`. You can install them using pip: `pip install adafruit-circuitpython-htu21d mariadb`
 
 ## Configuration
 The script requires two JSON configuration files: `config.json` and `secrets.json`.
