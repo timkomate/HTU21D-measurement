@@ -3,5 +3,6 @@
   "host": "0.0.0.0",
   "port": 3308,
   "database": "inside",
+  "table_name": "Data_rasbperry3",
   "dt": 30
 }
