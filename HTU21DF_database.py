@@ -33,7 +33,7 @@ while True:
     temperature = sensor.temperature
     humidity = sensor.relative_humidity
     now = datetime.datetime.utcnow()
-    query = f"INSERT INTO {config[table]} (date, temperature, humidity) VALUES ('{now}', '{temperature}', '{humidity}')"
+    query = f"INSERT INTO {config['table_name']} (date, temperature, humidity) VALUES ('{now}', '{temperature}', '{humidity}')"
     print(query)
     cur.execute(query)
     conn.commit()
