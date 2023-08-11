@@ -7,7 +7,8 @@ from adafruit_htu21d import HTU21D
 import json
 import logging
 
-class SensorDataLogger:
+
+class HTU21DLogger:
     def __init__(self, config_path, secrets_path):
         self.config = self.load_json(config_path)
         self.secrets = self.load_json(secrets_path)
@@ -17,14 +18,14 @@ class SensorDataLogger:
 
     @staticmethod
     def load_json(file_path):
-        with open(file_path, 'r') as json_file:
+        with open(file_path, "r") as json_file:
             data = json.load(json_file)
         return data
 
     def init_logging(self):
         logging.basicConfig(
             level=logging.INFO,
-            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         )
         self.logger = logging.getLogger(__name__)
 
@@ -36,12 +37,14 @@ class SensorDataLogger:
                 host=self.config["host"],
                 port=self.config["port"],
                 database=self.config["database"],
-                autocommit=False
+                autocommit=False,
             )
             self.cur = self.conn.cursor()
             self.logger.info("Database connection is ready")
         except mariadb.Error as e:
-            self.logger.error(f"An error occurred while connecting to the database: {e}")
+            self.logger.error(
+                f"An error occurred while connecting to the database: {e}"
+            )
             sys.exit(1)
 
     def init_sensor(self):
@@ -64,7 +67,9 @@ class SensorDataLogger:
                 self.cur.execute(query)
                 self.conn.commit()
             except mariadb.Error as e:
-                self.logger.error(f"An error occurred while inserting data into the database: {e}")
+                self.logger.error(
+                    f"An error occurred while inserting data into the database: {e}"
+                )
                 self.conn.rollback()
             time.sleep(self.config["dt"])
 
@@ -76,8 +81,3 @@ class SensorDataLogger:
             self.cur.close()
             self.conn.close()
             self.logger.info("Database connection closed")
-
-if __name__ == "__main__":
-    logger = SensorDataLogger("./config.json", "./secrets.json")
-    logger.run()
-

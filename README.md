@@ -13,12 +13,17 @@ Before running the script, ensure you have the following components and software
 ## Configuration
 The script requires two JSON configuration files: `config.json` and `secrets.json`.
 
+- Example configuration files can be found in the `configs` folder.
+- Before running the script, copy the example `config.json` and `secrets.json` files to the root folder of the repository and configure them with appropriate values.
+
+
 - `config.json` contains general configuration parameters for the script:
-* database_user: MariaDB username for accessing the database.
-* host: Database host address.
-* port: Database port number.
-* database: Name of the database to store the data.
-* dt: Time interval (in seconds) between sensor readings.
+    * database_user: MariaDB username for accessing the database.
+    * host: Database host address.
+    * port: Database port number.
+    * database: Name of the database to store the data.
+    * dt: Time interval (in seconds) between sensor readings.
+
 - `secrets.json` contains sensitive information like the database password. Make sure to keep this file secure and don't share it in public repositories.
 
 Example `config.json`:
@@ -37,16 +42,24 @@ Example secrets.json:
   "database_password": "your_password"
 }
 ```
+
+## Tests
+The `tests` folder contains a test script named `HTU21DF_test.py` that tests the wiring of the HTU21D sensor. Before using the main script, it's recommended to run these tests to ensure the sensor is correctly connected and functioning.
+
+To run the tests, navigate to the `tests` folder and execute the following command:
+```
+python HTU21DF_test.py
+```
 ## Usage
 Clone this repository to your Raspberry Pi.
 
-Create the `config.json` and `secrets.json` files with appropriate values.
+Copy the example config.json and secrets.json files from the configs folder to the root folder of the repository, and configure them with appropriate values.
 
 Connect the Adafruit HTU21D sensor to the appropriate GPIO pins on your Raspberry Pi.
 
 Run the script using the following command:
 
-```python sensor_data_logger.py```
+```python main.py```
 
 The script will establish a connection to the database, read sensor data at the specified interval, and insert it into the database. The process will continue indefinitely until manually stopped.
 

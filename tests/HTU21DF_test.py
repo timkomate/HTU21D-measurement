@@ -6,6 +6,7 @@ import board
 import busio
 from adafruit_htu21d import HTU21D
 
+# Sampling frequency
 dt = 3
 
 i2c = busio.I2C(board.SCL, board.SDA)
