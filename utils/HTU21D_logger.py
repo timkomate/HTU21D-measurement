@@ -32,11 +32,11 @@ class HTU21DLogger:
     def init_database_connection(self):
         try:
             self.conn = mariadb.connect(
-                user=self.config["database_user"],
-                password=self.secrets["database_password"],
-                host=self.config["host"],
-                port=self.config["port"],
-                database=self.config["database"],
+                user=self.config["db_user"],
+                password=self.secrets["db_password"],
+                host=self.config["db_host"],
+                port=self.config["db_port"],
+                database=self.config["db_name"],
                 autocommit=False,
             )
             self.cur = self.conn.cursor()
@@ -61,7 +61,7 @@ class HTU21DLogger:
             temperature = self.sensor.temperature
             humidity = self.sensor.relative_humidity
             now = datetime.datetime.utcnow()
-            query = f"INSERT INTO {self.config['table_name']} (date, temperature, humidity) VALUES ('{now}', '{temperature}', '{humidity}')"
+            query = f"INSERT INTO {self.config['db_table_name']} (date, temperature, humidity) VALUES ('{now}', '{temperature}', '{humidity}')"
             self.logger.info(query)
             try:
                 self.cur.execute(query)
