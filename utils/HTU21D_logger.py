@@ -6,7 +6,7 @@ import mariadb
 from adafruit_htu21d import HTU21D
 import json
 import logging
-
+import sys
 
 class HTU21DLogger:
     def __init__(self, config_path, secrets_path):
