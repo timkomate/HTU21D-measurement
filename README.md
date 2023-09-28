@@ -18,28 +18,30 @@ The script requires two JSON configuration files: `config.json` and `secrets.jso
 
 
 - `config.json` contains general configuration parameters for the script:
-    * database_user: MariaDB username for accessing the database.
-    * host: Database host address.
-    * port: Database port number.
-    * database: Name of the database to store the data.
-    * dt: Time interval (in seconds) between sensor readings.
+    * `db_user`: MariaDB username for accessing the database.
+    * `db_host`: Database host address.
+    * `db_port`: Database port number.
+    * `db_name`: Name of the database to store the data.
+    * `db_table_name`: Name of the database table name.
+    * `dt`: Time interval (in seconds) between sensor readings.
 
 - `secrets.json` contains sensitive information like the database password. Make sure to keep this file secure and don't share it in public repositories.
 
 Example `config.json`:
 ```
 {
-  "database_user": "your_username",
-  "host": "localhost",
-  "port": 3306,
-  "database": "sensor_data",
-  "dt": 300
+  "db_user": "your_username",
+  "db_host": "localhost",
+  "db_port": 3306,
+  "db_name": "sensor_data",
+  "db_table_name": "Data_raspberry3"
+  "dt": 600
 }
 ```
 Example secrets.json:
 ```
 {
-  "database_password": "your_password"
+  "db_password": "your_password"
 }
 ```
 
