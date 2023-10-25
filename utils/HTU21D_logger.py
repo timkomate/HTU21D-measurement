@@ -57,7 +57,6 @@ class HTU21DLogger:
 
     def log_sensor_data(self):
         while True:
-            day = datetime.datetime.now().day
             temperature = self.sensor.temperature
             humidity = self.sensor.relative_humidity
             now = datetime.datetime.utcnow()
